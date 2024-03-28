@@ -11,9 +11,16 @@ const userSchema = new mongoose.Schema({
     },
     priority: {
         type: Number
+    },
+    createdAt:{
+        type: Date
+    },
+    updatedAt:{
+        type: Date
+    },
+    deletedAt:{
+        type: Date
     }
-}, {
-    timestamps: true
 });
 
 const User = mongoose.model('User', userSchema);

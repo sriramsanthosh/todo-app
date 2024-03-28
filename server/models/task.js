@@ -14,7 +14,8 @@ const taskSchema = new mongoose.Schema({
         required: true
     },
     status: {
-        type: String
+        type: String,
+        default: "TODO"
     }, 
     priority: {
         type: Number
@@ -23,9 +24,16 @@ const taskSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
+    },
+    createdAt:{
+        type: Date
+    },
+    updatedAt:{
+        type: Date
+    },
+    deletedAt:{
+        type: Date
     }
-}, {
-    timestamps: true
 });
 
 const Task = mongoose.model('Task', taskSchema);

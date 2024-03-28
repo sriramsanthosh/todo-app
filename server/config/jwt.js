@@ -5,7 +5,6 @@ const secretKey = process.env.JWT_SECRET_KEY;
 
 module.exports.createToken = async(payload)=>{
     try{
-        console.log("payload", payload);
         const options = { expiresIn: process.env.JWT_EXPIRY_TIME }
         const token = await jwt.sign(payload, secretKey, options);
         return token;
@@ -26,3 +25,4 @@ module.exports.verifyToken = async(token)=>{
         return null;
     }
 }
+

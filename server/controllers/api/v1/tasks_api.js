@@ -27,7 +27,7 @@ module.exports.create = async (req, res) => {
         await updatePriority();
         console.log("I am here");
 
-        res.status(200).json({
+        return res.status(200).json({
             message: "Task Created!",
             task_id: task._id
         });
@@ -53,8 +53,8 @@ module.exports.update = async (req, res) => {
         const { task_id } = req.params;
 
         // Authorizing the User to update the task
-        const currTask = await Task.findById(task_id);
-        if(currTask.user_id !== decodedToken.id){ return res.status(403).json({message: "Access Denied to update Task!"});}
+        const currTask = await Task.findById(task_id).populate('user_id');
+        if(currTask.user_id.id !== decodedToken._id){ return res.status(403).json({message: "Access Denied to update Task!"});}
 
         // If Task got deleted => Deny Access to Update
         if(currTask.deletedAt){ return res.status(403).json({message: "Access Denied to update deleted task"});}

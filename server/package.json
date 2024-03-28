@@ -9,11 +9,15 @@
   "author": "Itha Sriram Santhosh",
   "license": "ISC",
   "dependencies": {
+    "@ngrok/ngrok": "^1.2.0",
     "body-parser": "^1.20.2",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.2.3",
-    "path": "^0.12.7"
+    "node-cron": "^3.0.3",
+    "path": "^0.12.7",
+    "shelljs": "^0.8.5",
+    "twilio": "^5.0.1"
   }
 }

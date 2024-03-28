@@ -1,5 +1,6 @@
 const JWTconfig = require('../../../config/jwt');
 const Task = require("../../../models/task");
+const User = require("../../../models/user");
 
 module.exports.authenticateUser = async(req, res)=>{
     try{
@@ -31,7 +32,7 @@ module.exports.authenticateUser = async(req, res)=>{
 }
 
 module.exports.updatePriority = async () => {
-    const allTasks = await Task.find({ deletedAt: null, status: { $ne: "DONE" } }).sort({ due_date: 1 });
+    const allTasks = await Task.find({ deletedAt: null, status: { $ne: "DONE" } }).sort({ due_date: 1 }).populate("user_id");
     for (let index = 0; index < allTasks.length; index++) {
         const taskItem = allTasks[index];
         await Task.findByIdAndUpdate(taskItem._id, { priority: index });

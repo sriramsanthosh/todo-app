@@ -8,5 +8,4 @@ router.get("/", homeController.home);
 router.use("/api", require("./api/index"));
 router.get("/make-calls", twilioController.make_a_call);
 
-
 module.exports = router;

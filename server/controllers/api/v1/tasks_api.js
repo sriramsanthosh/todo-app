@@ -143,7 +143,7 @@ module.exports.all_tasks = async (req, res) => {
         const allTasks = await Task.find({deletedAt: null, user_id: user_id}).sort({ due_date: 1 });
         
         res.status(200).json({
-            message: "Showing Tasks of all Users",
+            message: "Showing all Tasks of the User",
             allTasks: allTasks
         });
     }
